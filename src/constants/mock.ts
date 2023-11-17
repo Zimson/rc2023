@@ -1,22 +1,22 @@
 interface IMenu {
-  id: string,
-  name: string,
-  price: number,
-  ingredients: string[],
+  id: string;
+  name: string;
+  price: number;
+  ingredients: string[];
 }
 
 interface IReview {
-  id: string,
-  user: string,
-  text: string,
-  rating: number,
+  id: string;
+  user: string;
+  text: string;
+  rating: number;
 }
 
 interface IRestaurant {
-  id: string,
-  name: string
-  menu: IMenu[],
-  reviews: IReview[]
+  id: string;
+  name: string;
+  menu: IMenu[];
+  reviews: IReview[];
 }
 
 export const restaurants: IRestaurant[] = [
