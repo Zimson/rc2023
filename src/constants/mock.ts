@@ -1,25 +1,4 @@
-interface IMenu {
-  id: string;
-  name: string;
-  price: number;
-  ingredients: string[];
-}
-
-interface IReview {
-  id: string;
-  user: string;
-  text: string;
-  rating: number;
-}
-
-interface IRestaurant {
-  id: string;
-  name: string;
-  menu: IMenu[];
-  reviews: IReview[];
-}
-
-export const restaurants: IRestaurant[] = [
+export const restaurants = [
   {
     id: 'a757a0e9-03c1-4a2a-b384-8ac21dbe2fb2',
     name: 'Dishoom',

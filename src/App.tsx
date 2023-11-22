@@ -1,9 +1,10 @@
 import {FC} from 'react';
 
-interface IAppProps<T> {
-  pageData: T[];
-}
+import Restaurants from './components/pages/Restaurants';
+import IRestaurant from './components/pages/Restaurants/models/IRestaurant.ts';
 
-const App: FC<IAppProps<object>> = ({pageData}) => <div>{JSON.stringify(pageData)}</div>;
+const App: FC<{pageData: IRestaurant[]}> = ({pageData}) => (
+  <Restaurants restaurants={pageData} />
+);
 
 export default App;
