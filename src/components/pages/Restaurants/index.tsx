@@ -1,4 +1,5 @@
 import {FC} from 'react';
+import classNames from 'classnames/bind';
 
 import Tabs from '../../common/Tabs';
 import IRestaurant from './Restaurant/IRestaurant.ts';
@@ -8,6 +9,8 @@ import styles from './styles.module.css';
 interface IRestaurantsProps {
   restaurants: IRestaurant[];
 }
+
+const cx = classNames.bind(styles);
 
 const Restaurants: FC<IRestaurantsProps> = ({
   restaurants,
@@ -22,7 +25,7 @@ const Restaurants: FC<IRestaurantsProps> = ({
   return (
     <div>
       <Tabs items={tabs} onTabClick={handleTabClick} />
-      <div className={styles.restaurants}>
+      <div className={cx('restaurants')}>
         {restaurants.map(restaurant => (
           <Restaurant
             key={restaurant.id}

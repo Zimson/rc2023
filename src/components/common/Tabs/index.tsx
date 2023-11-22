@@ -1,6 +1,10 @@
+import classNames from 'classnames/bind';
+
 import UnorderedList from '../UnorderedList';
 import Tab from '../Tab';
 import styles from './styles.module.css';
+
+const cx = classNames.bind(styles);
 
 export interface ITabItem {
   id: string;
@@ -10,9 +14,10 @@ export interface ITabItem {
 interface ITabsProps<T> {
   items: T[];
   onTabClick: (item: T) => void;
+  className?: string;
 }
 
-const Tabs = <T extends ITabItem>({items, onTabClick}: ITabsProps<T>) => {
+const Tabs = <T extends ITabItem>({items, onTabClick, className}: ITabsProps<T>) => {
   const handleClick = (item: T) => () => {
     onTabClick(item);
   };
@@ -20,7 +25,7 @@ const Tabs = <T extends ITabItem>({items, onTabClick}: ITabsProps<T>) => {
   return (
     <UnorderedList
       items={items}
-      className={styles.tabs}
+      className={cx('tabs', className)}
       renderItem={(item: T) => (
         <Tab text={item.text} onClick={handleClick(item)} />
       )}
