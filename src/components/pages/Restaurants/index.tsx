@@ -1,14 +1,12 @@
 import {FC, useState} from 'react';
 import classNames from 'classnames/bind';
 
-import Tabs, {ITabItem} from '../../common/Tabs';
+import Tabs from '../../common/Tabs';
+import ITabItem from '../../common/Tabs/ITabItem.ts';
 import IRestaurant from './Restaurant/IRestaurant.ts';
 import Restaurant from './Restaurant';
+import IRestaurantsProps from './IRestaurantsProps.ts';
 import styles from './styles.module.css';
-
-interface IRestaurantsProps {
-  restaurants: IRestaurant[];
-}
 
 const cx = classNames.bind(styles);
 
@@ -33,10 +31,7 @@ const Restaurants: FC<IRestaurantsProps> = ({
       <Tabs items={tabs} onTabClick={handleTabClick} />
       {Boolean(restaurant?.id) && (
         <div className={cx('restaurant')}>
-          <Restaurant
-            key={restaurant?.id}
-            restaurant={restaurant}
-          />
+          <Restaurant key={restaurant?.id} restaurant={restaurant} />
         </div>
       )}
     </div>

@@ -1,15 +1,10 @@
-import {FC, MouseEventHandler} from 'react';
+import {FC} from 'react';
 
-interface ITabProps {
-  text: string;
-  onClick: MouseEventHandler<HTMLButtonElement>;
-  className?: string;
-}
+import Button from '../Button';
+import ITabProps from './ITabProps.ts';
 
 const Tab: FC<ITabProps> = ({text, onClick, className}) => (
-  <button onClick={onClick} className={className}>
-    {text}
-  </button>
+  <Button onClick={onClick} className={className} text={text}/>
 );
 
 export default Tab;

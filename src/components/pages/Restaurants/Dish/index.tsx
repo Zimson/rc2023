@@ -1,10 +1,6 @@
 import {FC} from 'react';
 
-import IDish from './IDish.ts';
-
-interface IDishProps {
-  dish: IDish;
-}
+import IDishProps from './IDishProps.ts';
 
 const Dish: FC<IDishProps> = ({dish}) => {
   const {id, name, price, ingredients} = dish;

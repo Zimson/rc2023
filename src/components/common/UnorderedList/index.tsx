@@ -1,14 +1,5 @@
-import {ReactNode} from 'react';
+import IListProps from './IListProps.ts';
 
-export interface IListItem {
-  id: string;
-}
-
-interface IListProps<T> {
-  items: T[];
-  renderItem: (item: T) => ReactNode;
-  className?: string;
-}
 
 const UnorderedList = <T extends {id: string}>({
   items,

@@ -1,18 +1,13 @@
 import {FC} from 'react';
 import classNames from 'classnames/bind';
 
-import IRestaurant from './IRestaurant.ts';
 import UnorderedList from '../../../common/UnorderedList';
+import IRestaurantProps from './IRestaurantProps.ts';
 import Dish from '../Dish';
 import IDish from '../Dish/IDish.ts';
 import Review from '../Review';
 import IReview from '../Review/IReview.ts';
 import styles from './styles.module.css';
-
-interface IRestaurantProps {
-  restaurant: IRestaurant | null;
-  className?: string;
-}
 
 const cx = classNames.bind(styles);
 
@@ -20,7 +15,6 @@ const Restaurant: FC<IRestaurantProps> = ({restaurant, className}) => {
   if (!restaurant) {
     return null;
   }
-
 
   return (
     <div className={cx(className)}>
@@ -37,6 +31,6 @@ const Restaurant: FC<IRestaurantProps> = ({restaurant, className}) => {
       />
     </div>
   );
-}
+};
 
 export default Restaurant;
