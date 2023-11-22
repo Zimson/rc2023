@@ -36,7 +36,6 @@ const Restaurants: FC<IRestaurantsProps> = ({
           <Restaurant
             key={restaurant?.id}
             restaurant={restaurant}
-            className={styles.restaurant}
           />
         </div>
       )}

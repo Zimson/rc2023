@@ -1,6 +1,4 @@
 .restaurant {
-  display: flex;
-  flex-direction: row;
   border: 1px solid lightsteelblue;
   padding: 0 16px;
 }
