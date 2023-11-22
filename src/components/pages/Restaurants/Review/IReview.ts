@@ -1,8 +1,8 @@
 interface IReview {
   id: string;
   user: string;
-  text: string;
   rating: number;
+  text?: string;
 }
 
 export default IReview;

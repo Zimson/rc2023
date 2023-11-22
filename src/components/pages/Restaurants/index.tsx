@@ -1,7 +1,7 @@
 import {FC} from 'react';
 
 import Tabs from '../../common/Tabs';
-import IRestaurant from './models/IRestaurant.ts';
+import IRestaurant from './Restaurant/IRestaurant.ts';
 import Restaurant from './Restaurant';
 import styles from './styles.module.css';
 

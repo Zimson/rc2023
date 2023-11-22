@@ -1,10 +1,10 @@
-import IMenu from './IMenu.ts';
-import IReview from './IReview.ts';
+import IDish from '../Dish/IDish.ts';
+import IReview from '../Review/IReview.ts';
 
 interface IRestaurant {
   id: string;
   name: string;
-  menu: IMenu[];
+  menu: IDish[];
   reviews: IReview[];
 }
 

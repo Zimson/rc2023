@@ -1,10 +1,12 @@
-import {FC} from 'react';
-
 import Restaurants from './components/pages/Restaurants';
-import IRestaurant from './components/pages/Restaurants/models/IRestaurant.ts';
+import IRestaurant from './components/pages/Restaurants/Restaurant/IRestaurant.ts';
 
-const App: FC<{pageData: IRestaurant[]}> = ({pageData}) => (
-  <Restaurants restaurants={pageData} />
+interface IAppProps<T> {
+  pageData: T[],
+}
+
+const App = <T extends object>({pageData}: IAppProps<T>) => (
+  <Restaurants restaurants={pageData as IRestaurant[]} />
 );
 
 export default App;

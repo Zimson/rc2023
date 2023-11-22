@@ -1,17 +1,20 @@
-import {FC, ReactNode} from 'react';
+import {ReactNode} from 'react';
 
-export interface IItem {
+export interface IListItem {
   id: string;
-  [key: string]: unknown;
 }
 
-export interface IListProps {
-  items: IItem[];
-  renderItem: (item: IItem) => ReactNode;
+interface IListProps<T> {
+  items: T[];
+  renderItem: (item: T) => ReactNode;
   className?: string;
 }
 
-const UnorderedList: FC<IListProps> = ({items, className, renderItem}) => (
+const UnorderedList = <T extends {id: string}>({
+  items,
+  className,
+  renderItem,
+}: IListProps<T>) => (
   <ul className={className}>
     {items.map(item => (
       <li key={item.id}>{renderItem(item)}</li>

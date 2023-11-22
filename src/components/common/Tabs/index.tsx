@@ -1,16 +1,19 @@
-import {FC} from 'react';
-
-import UnorderedList, {IItem} from '../UnorderedList';
+import UnorderedList from '../UnorderedList';
 import Tab from '../Tab';
 import styles from './styles.module.css';
 
-interface ITabsProps {
-  items: IItem[];
-  onTabClick: (item: IItem) => void;
+export interface ITabItem {
+  id: string;
+  text: string;
 }
 
-const Tabs: FC<ITabsProps> = ({items, onTabClick}) => {
-  const onChange = (item: IItem) => () => {
+interface ITabsProps<T> {
+  items: T[];
+  onTabClick: (item: T) => void;
+}
+
+const Tabs = <T extends ITabItem>({items, onTabClick}: ITabsProps<T>) => {
+  const handleClick = (item: T) => () => {
     onTabClick(item);
   };
 
@@ -18,11 +21,8 @@ const Tabs: FC<ITabsProps> = ({items, onTabClick}) => {
     <UnorderedList
       items={items}
       className={styles.tabs}
-      renderItem={(item: IItem) => (
-        <Tab
-          text={item.text as string}
-          onClick={onChange(item)}
-        />
+      renderItem={(item: T) => (
+        <Tab text={item.text} onClick={handleClick(item)} />
       )}
     />
   );
