@@ -13,7 +13,7 @@ export interface ITabItem {
 
 interface ITabsProps<T> {
   items: T[];
-  onTabClick: (item: T) => void;
+  onTabClick: (item: ITabItem) => void;
   className?: string;
 }
 

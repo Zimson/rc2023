@@ -1,7 +1,7 @@
-import {FC} from 'react';
+import {FC, useState} from 'react';
 import classNames from 'classnames/bind';
 
-import Tabs from '../../common/Tabs';
+import Tabs, {ITabItem} from '../../common/Tabs';
 import IRestaurant from './Restaurant/IRestaurant.ts';
 import Restaurant from './Restaurant';
 import styles from './styles.module.css';
@@ -20,20 +20,26 @@ const Restaurants: FC<IRestaurantsProps> = ({
     text: restaurant.name,
   }));
 
-  const handleTabClick = () => undefined;
+  const [restaurant, setRestaurant] = useState<IRestaurant | null>(null);
+
+  const handleTabClick = (tab: ITabItem) => {
+    const restaurant = restaurants.find(({id}) => id === tab.id) ?? null;
+
+    setRestaurant(restaurant);
+  };
 
   return (
     <div>
       <Tabs items={tabs} onTabClick={handleTabClick} />
-      <div className={cx('restaurants')}>
-        {restaurants.map(restaurant => (
+      {Boolean(restaurant?.id) && (
+        <div className={cx('restaurant')}>
           <Restaurant
-            key={restaurant.id}
+            key={restaurant?.id}
             restaurant={restaurant}
             className={styles.restaurant}
           />
-        ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

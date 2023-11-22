@@ -8,24 +8,31 @@ import Review from '../Review';
 import IReview from '../Review/IReview.ts';
 
 interface IRestaurantProps {
-  restaurant: IRestaurant;
+  restaurant: IRestaurant | null;
   className?: string;
 }
 
-const Restaurant: FC<IRestaurantProps> = ({restaurant, className}) => (
-  <div className={className}>
-    <h2>{restaurant.name}</h2>
-    <h3>Меню:</h3>
-    <UnorderedList
-      items={restaurant.menu}
-      renderItem={(dish: IDish) => <Dish dish={dish} />}
-    />
-    <h3>Отзывы:</h3>
-    <UnorderedList
-      items={restaurant.reviews}
-      renderItem={(review: IReview) => <Review review={review} />}
-    />
-  </div>
-);
+const Restaurant: FC<IRestaurantProps> = ({restaurant, className}) => {
+  if (!restaurant) {
+    return null;
+  }
+
+
+  return (
+    <div className={className}>
+      <h2>{restaurant.name}</h2>
+      <h3>Меню:</h3>
+      <UnorderedList
+        items={restaurant.menu}
+        renderItem={(dish: IDish) => <Dish dish={dish} />}
+      />
+      <h3>Отзывы:</h3>
+      <UnorderedList
+        items={restaurant.reviews}
+        renderItem={(review: IReview) => <Review review={review} />}
+      />
+    </div>
+  );
+}
 
 export default Restaurant;
