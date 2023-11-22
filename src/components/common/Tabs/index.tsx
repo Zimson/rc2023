@@ -2,6 +2,7 @@ import {FC} from 'react';
 
 import UnorderedList, {IItem} from '../UnorderedList';
 import Tab from '../Tab';
+import styles from './styles.module.css';
 
 interface ITabsProps {
   items: IItem[];
@@ -16,6 +17,7 @@ const Tabs: FC<ITabsProps> = ({items, onTabClick}) => {
   return (
     <UnorderedList
       items={items}
+      className={styles.tabs}
       renderItem={(item: IItem) => (
         <Tab
           text={item.text as string}
