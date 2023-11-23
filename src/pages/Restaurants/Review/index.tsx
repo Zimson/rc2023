@@ -1,21 +1,15 @@
 import {FC} from 'react';
 
-import IReview from './IReview.ts';
-
-interface IReviewProps {
-  review: IReview;
-}
+import IReviewProps from './IReviewProps.ts';
 
 const Review: FC<IReviewProps> = ({review}) => {
-  const {id,user, rating, text} = review;
+  const {id, user, rating, text} = review;
 
   return (
     <div id={id}>
       <h4>Пользователь: {user}</h4>
       <p>Рейтинг: {rating}</p>
-      {Boolean(text?.length) && (
-        <p>Отзыв: {text}</p>
-      )}
+      {Boolean(text?.length) && <p>Отзыв: {text}</p>}
     </div>
   );
 };

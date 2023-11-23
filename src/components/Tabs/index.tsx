@@ -3,21 +3,16 @@ import classNames from 'classnames/bind';
 import UnorderedList from '../UnorderedList';
 import Tab from '../Tab';
 import styles from './styles.module.css';
+import ITab from '../Tab/ITab.ts';
+import ITabsProps from './ITabsProps.ts';
 
 const cx = classNames.bind(styles);
 
-export interface ITabItem {
-  id: string;
-  text: string;
-}
-
-interface ITabsProps<T> {
-  items: T[];
-  onTabClick: (item: T) => void;
-  className?: string;
-}
-
-const Tabs = <T extends ITabItem>({items, onTabClick, className}: ITabsProps<T>) => {
+const Tabs = <T extends ITab>({
+  items,
+  onTabClick,
+  className,
+}: ITabsProps<T>) => {
   const handleClick = (item: T) => () => {
     onTabClick(item);
   };
