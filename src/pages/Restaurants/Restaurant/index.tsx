@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import classNames from 'classnames/bind';
 
-import UnorderedList from '../../../common/UnorderedList';
+import UnorderedList from '../../../components/UnorderedList';
 import IRestaurantProps from './IRestaurantProps.ts';
 import Dish from '../Dish';
 import IDish from '../Dish/IDish.ts';

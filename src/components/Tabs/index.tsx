@@ -3,12 +3,12 @@ import classNames from 'classnames/bind';
 import UnorderedList from '../UnorderedList';
 import Tab from '../Tab';
 import styles from './styles.module.css';
-import ITabItem from './ITabItem.ts';
+import ITab from '../Tab/ITab.ts';
 import ITabsProps from './ITabsProps.ts';
 
 const cx = classNames.bind(styles);
 
-const Tabs = <T extends ITabItem>({
+const Tabs = <T extends ITab>({
   items,
   onTabClick,
   className,

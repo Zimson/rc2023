@@ -1,7 +1,7 @@
 import IListProps from './IListProps.ts';
+import IListItem from './IListItem.ts';
 
-
-const UnorderedList = <T extends {id: string}>({
+const UnorderedList = <T extends IListItem>({
   items,
   className,
   renderItem,

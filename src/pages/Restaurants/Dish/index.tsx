@@ -1,7 +1,7 @@
 import {FC, useState} from 'react';
 import classNames from 'classnames/bind';
 
-import Button from '../../../common/Button';
+import Button from '../../../components/Button';
 import IDishProps from './IDishProps.ts';
 import styles from './styles.module.css';
 

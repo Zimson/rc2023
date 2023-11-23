@@ -1,8 +1,8 @@
 import {FC, useState} from 'react';
 import classNames from 'classnames/bind';
 
-import Tabs from '../../common/Tabs';
-import ITabItem from '../../common/Tabs/ITabItem.ts';
+import Tabs from '../../components/Tabs';
+import ITab from '../../components/Tab/ITab.ts';
 import IRestaurant from './Restaurant/IRestaurant.ts';
 import Restaurant from './Restaurant';
 import IRestaurantsProps from './IRestaurantsProps.ts';
@@ -20,7 +20,7 @@ const Restaurants: FC<IRestaurantsProps> = ({
 
   const [restaurant, setRestaurant] = useState<IRestaurant | null>(null);
 
-  const handleTabClick = (tab: ITabItem) => {
+  const handleTabClick = (tab: ITab) => {
     const restaurant = restaurants.find(({id}) => id === tab.id) ?? null;
 
     setRestaurant(restaurant);
