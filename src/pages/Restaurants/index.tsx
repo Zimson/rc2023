@@ -31,7 +31,7 @@ const Restaurants: FC<IRestaurantsProps> = ({
       <Tabs items={tabs} onTabClick={handleTabClick} />
       {Boolean(restaurant?.id) && (
         <div className={cx('restaurant')}>
-          <Restaurant key={restaurant?.id} restaurant={restaurant} />
+          <Restaurant restaurant={restaurant} />
         </div>
       )}
     </div>
