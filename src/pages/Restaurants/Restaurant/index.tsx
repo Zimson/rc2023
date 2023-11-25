@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 import UnorderedList from '../../../components/UnorderedList';
 import Dish from '../Dish';
 import Review from '../Review';
+import ReviewForm from '../ReviewForm';
 
 import IDish from '../interfaces/IDish.ts';
 import IReview from '../interfaces/IReview.ts';
@@ -31,6 +32,7 @@ const Restaurant: FC<IProps> = ({restaurant, className}) => {
         items={restaurant.reviews}
         renderItem={(review: IReview) => <Review review={review} />}
       />
+      <ReviewForm className={cx('review-form')}/>
     </div>
   );
 };
