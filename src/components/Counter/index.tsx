@@ -1,13 +1,15 @@
 import {FC} from 'react';
 import classNames from 'classnames/bind';
 
-import ICounterProps from './ICounterProps.ts';
 import Button from '../Button';
+
+import IProps from './props.ts';
+
 import styles from './styles.module.css';
 
 const cx = classNames.bind(styles);
 
-const Counter: FC<ICounterProps> = ({
+const Counter: FC<IProps> = ({
   count,
   onDecrement,
   onIncrement,

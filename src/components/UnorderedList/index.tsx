@@ -1,11 +1,12 @@
-import IListProps from './IListProps.ts';
-import IListItem from './IListItem.ts';
+import IProps from './props.ts';
+
+import IListItem from '../interfaces/IListItem.ts';
 
 const UnorderedList = <T extends IListItem>({
   items,
   className,
   renderItem,
-}: IListProps<T>) => (
+}: IProps<T>) => (
   <ul className={className}>
     {items.map(item => (
       <li key={item.id}>{renderItem(item)}</li>

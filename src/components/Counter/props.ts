@@ -1,4 +1,4 @@
-interface ICounterProps {
+interface Props {
   count: number;
   onDecrement: (cont: number) => void;
   onIncrement: (cont: number) => void;
@@ -8,4 +8,4 @@ interface ICounterProps {
   className?: string;
 }
 
-export default ICounterProps;
+export default Props;

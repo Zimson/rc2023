@@ -1,10 +1,10 @@
 import {MouseEventHandler} from 'react';
 
-interface IButtonProps {
+interface Props {
   text: string;
   onClick: MouseEventHandler<HTMLButtonElement>;
   className?: string;
   disabled?: boolean;
 }
 
-export default IButtonProps;
+export default Props;

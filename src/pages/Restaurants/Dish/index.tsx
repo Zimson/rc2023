@@ -1,16 +1,18 @@
 import {FC, useState} from 'react';
 import classNames from 'classnames/bind';
 
-import IDishProps from './IDishProps.ts';
-import styles from './styles.module.css';
 import Counter from '../../../components/Counter';
+
+import IProps from './props.ts';
+
+import styles from './styles.module.css';
 
 const cx = classNames.bind(styles);
 
 const MIN_COUNT = 0;
 const MAX_COUNT = 5;
 
-const Dish: FC<IDishProps> = ({dish}) => {
+const Dish: FC<IProps> = ({dish}) => {
   const {id, name, price, ingredients} = dish;
 
   const [count, setCount] = useState(0);
