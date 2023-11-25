@@ -1,23 +1,24 @@
-import {useReducer, FC, ChangeEvent, Dispatch} from 'react';
+import {useReducer, FC, ChangeEvent, Dispatch, FormEvent, useId} from 'react';
 import classNames from 'classnames/bind';
 
 import Counter from '../../../components/Counter';
 import Button from '../../../components/Button';
 
 import IProps from './props.ts';
+import IReview from '../interfaces/IReview.ts';
 
 import styles from './styles.module.css';
 
 const cx = classNames.bind(styles);
 
-const MIN_SCORE = 1;
-const MAX_SCORE = 5;
+const MIN_RATING = 1;
+const MAX_RATING = 5;
 const SCORING_STEP = 0.5;
 
 enum ACTION_TYPE {
   CHANGE_NAME = 'CHANGE_NAME',
-  DECREMENT_SCORE = 'DECREMENT_SCORE',
-  INCREMENT_SCORE = 'INCREMENT_SCORE',
+  DECREMENT_RATING = 'DECREMENT_RATING',
+  INCREMENT_RATING = 'INCREMENT_RATING',
   CHANGE_REVIEW = 'CHANGE_REVIEW',
 }
 
@@ -26,16 +27,11 @@ interface IAction {
   payload: unknown;
 }
 
-interface IState {
-  name: string;
-  score: number;
-  review: string;
-}
-
-const initialState = {
-  name: '',
-  score: MIN_SCORE,
-  review: '',
+type IState = Omit<IReview, 'id'>;
+const initialState: IState = {
+  user: '',
+  rating: MIN_RATING,
+  text: '',
 };
 
 const reducer = (state: IState, action: IAction): IState => {
@@ -43,16 +39,16 @@ const reducer = (state: IState, action: IAction): IState => {
 
   switch (type) {
     case ACTION_TYPE.CHANGE_NAME:
-      return {...state, name: payload as string};
+      return {...state, user: payload as string};
 
-    case ACTION_TYPE.DECREMENT_SCORE:
-      return {...state, score: payload as number};
+    case ACTION_TYPE.DECREMENT_RATING:
+      return {...state, rating: payload as number};
 
-    case ACTION_TYPE.INCREMENT_SCORE:
-      return {...state, score: payload as number};
+    case ACTION_TYPE.INCREMENT_RATING:
+      return {...state, rating: payload as number};
 
     case ACTION_TYPE.CHANGE_REVIEW:
-      return {...state, review: payload as string};
+      return {...state, text: payload as string};
 
     default:
       return state;
@@ -75,18 +71,23 @@ const createCtrlHandler =
     });
   };
 
-const ReviewForm: FC<IProps> = ({title = 'Форма отзыва', className}) => {
+const ReviewForm: FC<IProps> = ({
+  title = 'Форма отзыва',
+  onSubmit,
+  className,
+}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const userId = `${state.user}-${useId()}`;
 
   const handleChangeName = createCtrlHandler(ACTION_TYPE.CHANGE_NAME, dispatch);
 
   const handleDecrementScoring = createCtrlHandler(
-    ACTION_TYPE.DECREMENT_SCORE,
+    ACTION_TYPE.DECREMENT_RATING,
     dispatch,
   );
 
   const handleIncrementScoring = createCtrlHandler(
-    ACTION_TYPE.INCREMENT_SCORE,
+    ACTION_TYPE.INCREMENT_RATING,
     dispatch,
   );
 
@@ -95,38 +96,43 @@ const ReviewForm: FC<IProps> = ({title = 'Форма отзыва', className}) 
     dispatch,
   );
 
-  const handleSubmit = () => ({});
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    onSubmit({id: userId, ...state});
+  };
 
   return (
     <div className={cx('review-form', className)}>
       <h3 className={cx('title')}>{title}</h3>
-      <form className={cx('form')}>
+      <form className={cx('form')} onSubmit={handleSubmit}>
         <div className={cx('form-group')}>
-          <label htmlFor="name">Ваше имя:</label>
+          <label htmlFor="user">Ваше имя:</label>
           <input
-            id="name"
-            value={state.name}
+            id="user"
+            value={state.user}
             onChange={handleChangeName}
             type="text"
             placeholder="Введите своё имя"
+            required
           />
         </div>
         <div className={cx('form-group')}>
           <span>Ваша оценка:</span>
           <Counter
-            min={MIN_SCORE}
-            max={MAX_SCORE}
+            min={MIN_RATING}
+            max={MAX_RATING}
             step={SCORING_STEP}
-            count={state.score}
+            count={state.rating}
             onDecrement={handleDecrementScoring}
             onIncrement={handleIncrementScoring}
           />
         </div>
         <div className={cx('form-group')}>
-          <label htmlFor="review">Ваш отзыв</label>
+          <label htmlFor="text">Ваш отзыв</label>
           <textarea
-            id="review"
-            value={state.review}
+            id="text"
+            value={state.text}
             onChange={handleChangeReview}
             placeholder="Введите свой отзыв"
           />
@@ -134,7 +140,6 @@ const ReviewForm: FC<IProps> = ({title = 'Форма отзыва', className}) 
         <Button
           text="Оставить отзыв"
           type="submit"
-          onClick={handleSubmit}
           className={cx('submit-button')}
         />
       </form>

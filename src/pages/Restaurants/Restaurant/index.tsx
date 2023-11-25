@@ -19,6 +19,10 @@ const Restaurant: FC<IProps> = ({restaurant, className}) => {
     return null;
   }
 
+  const handleReviewSubmit = (review: IReview) => {
+    console.log(review);
+  };
+
   return (
     <div className={cx(className)}>
       <h2>{restaurant.name}</h2>
@@ -32,7 +36,7 @@ const Restaurant: FC<IProps> = ({restaurant, className}) => {
         items={restaurant.reviews}
         renderItem={(review: IReview) => <Review review={review} />}
       />
-      <ReviewForm className={cx('review-form')}/>
+      <ReviewForm className={cx('review-form')} onSubmit={handleReviewSubmit} />
     </div>
   );
 };
