@@ -1,4 +1,4 @@
-import {useReducer, FC, ChangeEvent, Dispatch, FormEvent, useId} from 'react';
+import {useReducer, FC, ChangeEvent, FormEvent, useId} from 'react';
 import classNames from 'classnames/bind';
 
 import Counter from '../../../components/Counter';
@@ -55,22 +55,6 @@ const reducer = (state: IState, action: IAction): IState => {
   }
 };
 
-const createCtrlHandler =
-  (actionType: ACTION_TYPE, dispatch: Dispatch<IAction>) =>
-  (
-    handlerPayload:
-      | number
-      | ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    dispatch({
-      type: actionType,
-      payload:
-        typeof handlerPayload === 'number'
-          ? handlerPayload
-          : handlerPayload.target.value,
-    });
-  };
-
 const ReviewForm: FC<IProps> = ({
   title = 'Форма отзыва',
   onSubmit,
@@ -79,22 +63,21 @@ const ReviewForm: FC<IProps> = ({
   const [state, dispatch] = useReducer(reducer, initialState);
   const userId = `${state.user}-${useId()}`;
 
-  const handleChangeName = createCtrlHandler(ACTION_TYPE.CHANGE_NAME, dispatch);
+  const handleChangeName = (event: ChangeEvent<HTMLInputElement>) => {
+    dispatch({type: ACTION_TYPE.CHANGE_NAME, payload: event.target.value});
+  }
 
-  const handleDecrementScoring = createCtrlHandler(
-    ACTION_TYPE.DECREMENT_RATING,
-    dispatch,
-  );
+  const handleDecrementScoring = (rating: number) => {
+    dispatch({type: ACTION_TYPE.DECREMENT_RATING, payload: rating});
+  }
 
-  const handleIncrementScoring = createCtrlHandler(
-    ACTION_TYPE.INCREMENT_RATING,
-    dispatch,
-  );
+  const handleIncrementScoring = (rating: number) => {
+    dispatch({type: ACTION_TYPE.INCREMENT_RATING, payload: rating});
+  }
 
-  const handleChangeReview = createCtrlHandler(
-    ACTION_TYPE.CHANGE_REVIEW,
-    dispatch,
-  );
+  const handleChangeReview = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    dispatch({type: ACTION_TYPE.CHANGE_REVIEW, payload: event.target.value});
+  }
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
