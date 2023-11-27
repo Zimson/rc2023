@@ -1,8 +1,8 @@
 import {FC} from 'react';
 
-import IReviewProps from './IReviewProps.ts';
+import IProps from './props.ts';
 
-const Review: FC<IReviewProps> = ({review}) => {
+const Review: FC<IProps> = ({review}) => {
   const {id, user, rating, text} = review;
 
   return (

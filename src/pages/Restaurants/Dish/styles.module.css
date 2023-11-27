@@ -11,16 +11,3 @@
 .counter-buttons {
   margin-left: 16px;
 }
-
-.decrement {
-  margin-right: 8px;
-}
-
-.increment {
-  margin-left: 8px;
-}
-
-.warning {
-  margin-left: 8px;
-  color: coral;
-}

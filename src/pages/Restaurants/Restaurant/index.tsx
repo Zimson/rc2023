@@ -2,19 +2,26 @@ import {FC} from 'react';
 import classNames from 'classnames/bind';
 
 import UnorderedList from '../../../components/UnorderedList';
-import IRestaurantProps from './IRestaurantProps.ts';
 import Dish from '../Dish';
-import IDish from '../Dish/IDish.ts';
 import Review from '../Review';
-import IReview from '../Review/IReview.ts';
+import ReviewForm from '../ReviewForm';
+
+import IDish from '../interfaces/IDish.ts';
+import IReview from '../interfaces/IReview.ts';
+import IProps from './props.ts';
+
 import styles from './styles.module.css';
 
 const cx = classNames.bind(styles);
 
-const Restaurant: FC<IRestaurantProps> = ({restaurant, className}) => {
+const Restaurant: FC<IProps> = ({restaurant, className}) => {
   if (!restaurant) {
     return null;
   }
+
+  const handleReviewSubmit = (review: IReview) => {
+    console.log(review);
+  };
 
   return (
     <div className={cx(className)}>
@@ -29,6 +36,7 @@ const Restaurant: FC<IRestaurantProps> = ({restaurant, className}) => {
         items={restaurant.reviews}
         renderItem={(review: IReview) => <Review review={review} />}
       />
+      <ReviewForm className={cx('review-form')} onSubmit={handleReviewSubmit} />
     </div>
   );
 };

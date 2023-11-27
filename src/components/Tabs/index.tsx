@@ -2,9 +2,11 @@ import classNames from 'classnames/bind';
 
 import UnorderedList from '../UnorderedList';
 import Tab from '../Tab';
+
+import ITab from '../interfaces/ITab.ts';
+import IProps from './props.ts';
+
 import styles from './styles.module.css';
-import ITab from '../Tab/ITab.ts';
-import ITabsProps from './ITabsProps.ts';
 
 const cx = classNames.bind(styles);
 
@@ -12,7 +14,7 @@ const Tabs = <T extends ITab>({
   items,
   onTabClick,
   className,
-}: ITabsProps<T>) => {
+}: IProps<T>) => {
   const handleClick = (item: T) => () => {
     onTabClick(item);
   };

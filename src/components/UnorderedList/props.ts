@@ -1,9 +1,9 @@
 import {ReactNode} from 'react';
 
-interface IListProps<T> {
+interface IProps<T> {
   items: T[];
   renderItem: (item: T) => ReactNode;
   className?: string;
 }
 
-export default IListProps;
+export default IProps;
