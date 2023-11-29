@@ -1,4 +1,4 @@
-import IButtonProps from '../Button/props.ts';
+import {IProps as IButtonProps} from '../Button/props.ts';
 
 type IProps = IButtonProps;
 

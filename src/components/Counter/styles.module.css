@@ -1,7 +1,30 @@
+.counter {
+  display: inline-flex;
+  align-items: center;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 24px;
+}
+
+.decrement-dash {
+  margin-top: -2px;
+  font-weight: 600;
+}
+
 .decrement {
   margin-right: 8px;
 }
 
 .increment {
   margin-left: 8px;
+}
+
+.count {
+  text-align: center;
+  min-width: 4ch;
 }

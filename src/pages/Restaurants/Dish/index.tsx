@@ -12,13 +12,13 @@ const cx = classNames.bind(styles);
 const MIN_COUNT = 0;
 const MAX_COUNT = 5;
 
-const Dish: FC<IProps> = ({dish}) => {
+const Dish: FC<IProps> = ({dish, className}) => {
   const {id, name, price, ingredients} = dish;
 
   const [count, setCount] = useState(0);
 
   return (
-    <div id={id}>
+    <div className={cx('dish', className)} id={id}>
       <div className={cx('title-container')}>
         <h4 className={cx('title')}>{name}</h4>
         <Counter

@@ -1,0 +1,23 @@
+@import url('../../../styles/style-vars.module.css');
+
+.review {
+  padding: 16px;
+  border: 1px dashed var(--alert-color);
+  border-radius: var(--border-radius);
+}
+
+.rating {
+  font-weight: 600;
+}
+
+.rating.success {
+  color: var(--success-color);
+}
+
+.rating.alert {
+    color: var(--alert-color);
+}
+
+.rating.danger {
+    color: var(--danger-color);
+}

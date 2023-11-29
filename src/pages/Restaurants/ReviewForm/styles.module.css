@@ -1,3 +1,5 @@
+@import url('../../../styles/style-vars.module.css');
+
 .title {
   margin: 0;
 }
@@ -9,12 +11,36 @@
   align-items: flex-start;
   margin-top: 16px;
   line-height: 1.5;
+  width: 100%;
 }
 
 .form-group:first-of-type {
-  margin-top: 8px;
+  margin-top: 16px;
+}
+
+.label {
+  cursor: pointer;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  padding: 8px;
+}
+
+.review-input {
+  resize: none;
+  min-height: 100px;
 }
 
 .submit-button {
   margin-top: 16px;
+  height: 32px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.is-submitting {
+  pointer-events: none;
+  opacity: 0.4;
 }
