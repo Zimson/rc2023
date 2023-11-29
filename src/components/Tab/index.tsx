@@ -1,10 +1,9 @@
 import {FC} from 'react';
 
 import Button from '../Button';
+import ITabProps from './ITabProps.ts';
 
-import IProps from './props.ts';
-
-const Tab: FC<IProps> = ({text, onClick, className}) => (
+const Tab: FC<ITabProps> = ({text, onClick, className}) => (
   <Button onClick={onClick} className={className} text={text}/>
 );
 

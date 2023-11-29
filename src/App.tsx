@@ -1,7 +1,7 @@
 import Restaurants from './pages/Restaurants';
-import IRestaurant from './pages/Restaurants/interfaces/IRestaurant.ts';
+import IRestaurant from './pages/Restaurants/Restaurant/IRestaurant.ts';
+import IAppProps from './IAppProps.ts';
 
-import IAppProps from './appProps.ts';
 
 const App = <T extends object>({pageData}: IAppProps<T>) => (
   <Restaurants restaurants={pageData as IRestaurant[]} />

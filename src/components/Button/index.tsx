@@ -1,20 +1,9 @@
 import {FC} from 'react';
 
-import IProps from './props.ts';
+import IButtonProps from './IButtonProps.ts';
 
-const Button: FC<IProps> = ({
-  text,
-  onClick,
-  className,
-  disabled,
-  type = 'button',
-}) => (
-  <button
-    onClick={onClick}
-    className={className}
-    disabled={disabled}
-    type={type}
-  >
+const Button: FC<IButtonProps> = ({text, onClick, className}) => (
+  <button onClick={onClick} className={className}>
     {text}
   </button>
 );

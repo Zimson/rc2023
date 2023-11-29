@@ -1,4 +1,4 @@
-import IListItem from '../../../components/interfaces/IListItem.ts';
+import IListItem from '../../../components/UnorderedList/IListItem.ts';
 
 interface IDish extends IListItem {
   name: string;

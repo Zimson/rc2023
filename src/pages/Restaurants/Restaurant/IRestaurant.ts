@@ -1,5 +1,5 @@
-import IDish from './IDish.ts';
-import IReview from './IReview.ts';
+import IDish from '../Dish/IDish.ts';
+import IReview from '../Review/IReview.ts';
 
 interface IRestaurant {
   id: string;
