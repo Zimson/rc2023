@@ -19,8 +19,10 @@ const Restaurant: FC<IProps> = ({restaurant, className}) => {
     return null;
   }
 
-  const handleReviewSubmit = (review: IReview) => {
+  const handleReviewSubmit = (review: IReview, callback: () => void) => {
     console.log(review);
+
+    setTimeout(callback, 2000);
   };
 
   return (
@@ -28,14 +30,17 @@ const Restaurant: FC<IProps> = ({restaurant, className}) => {
       <h2>{restaurant.name}</h2>
       <h3>Меню:</h3>
       <UnorderedList
+        className={cx('dishes')}
         items={restaurant.menu}
         renderItem={(dish: IDish) => <Dish dish={dish} />}
       />
       <h3>Отзывы:</h3>
       <UnorderedList
+        className={cx('reviews')}
         items={restaurant.reviews}
         renderItem={(review: IReview) => <Review review={review} />}
       />
+      <hr/>
       <ReviewForm className={cx('review-form')} onSubmit={handleReviewSubmit} />
     </div>
   );

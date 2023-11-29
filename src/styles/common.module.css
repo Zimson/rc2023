@@ -1,0 +1,58 @@
+@import url('./style-vars.module.css');
+
+html,
+body,
+#root {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  min-height: 100%;
+  color: var(--font-color);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+}
+
+a,
+.a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: var(--link-font-weight);
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+/* block removes arrows in number types inputs */
+
+/* For Firefox */
+input[type='number'] {
+  -moz-appearance: textfield; /* stylelint-disable-line plugin/no-unsupported-browser-features */
+}
+
+/* Webkit browsers like Safari and Chrome */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none; /* stylelint-disable-line plugin/no-unsupported-browser-features */
+  margin: 0;
+}

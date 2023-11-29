@@ -2,7 +2,7 @@ import IReview from '../interfaces/IReview.ts';
 
 interface IProps {
   title?: string;
-  onSubmit: (formState: IReview) => void;
+  onSubmit: (formState: IReview, callback: () => void) => void;
   className?: string;
 }
 
