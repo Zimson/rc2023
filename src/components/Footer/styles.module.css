@@ -1,0 +1,6 @@
+@import url('../../styles/style-vars.css');
+
+.root {
+  height: 48px;
+  background-color: var(--secondary-bg-color);
+}

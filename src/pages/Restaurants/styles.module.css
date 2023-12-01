@@ -1,4 +1,7 @@
+.tabs {
+  padding: 0 16px;
+}
+
 .restaurant {
-  border: 1px solid lightsteelblue;
   padding: 0 16px;
 }

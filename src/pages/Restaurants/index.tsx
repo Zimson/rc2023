@@ -28,7 +28,7 @@ const Restaurants: FC<IProps> = ({restaurants}: IProps) => {
 
   return (
     <div>
-      <Tabs items={tabs} onTabClick={handleTabClick} />
+      <Tabs items={tabs} onTabClick={handleTabClick} className={cx('tabs')} />
       {Boolean(restaurant?.id) && (
         <div className={cx('restaurant')}>
           <Restaurant restaurant={restaurant} />

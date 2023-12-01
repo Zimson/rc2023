@@ -1,6 +1,8 @@
 :root {
   --primary-color: #467eff;
   --secondary-color: #333333;
+  --primary-bg-color: #ffffff;
+  --secondary-bg-color: #efefef;
   --font-family: 'Open Sans', serif;
   --link-font-weight: 400;
   --font-color: rgba(51, 51, 51, 0.85);
