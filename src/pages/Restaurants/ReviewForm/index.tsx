@@ -168,6 +168,7 @@ const ReviewForm: FC<IProps> = ({
           type="submit"
           className={cx('submit-button')}
           color={ButtonColor.danger}
+          theme={theme}
         />
       </form>
     </div>

@@ -1,6 +1,6 @@
 import {createContext, Context} from 'react';
 
-import {Theme} from '../../components/interfaces/ITheme.ts';
+import {Theme} from '../../interfaces/ITheme.ts';
 
 const ThemeContext: Context<[Theme, () => void]> = createContext<
   [Theme, () => void]

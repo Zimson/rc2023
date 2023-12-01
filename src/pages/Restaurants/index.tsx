@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import Tabs from '../../components/Tabs';
 import Restaurant from './Restaurant';
 
-import ITab from '../../components/interfaces/ITab.ts';
+import ITab from '../../interfaces/ITab.ts';
 import IRestaurant from './interfaces/IRestaurant.ts';
 import IProps from './props.ts';
 

@@ -2,7 +2,7 @@ import {useCallback, useState, FC} from 'react';
 
 import ThemeContext from './context.tsx';
 
-import {Theme} from '../../components/interfaces/ITheme.ts';
+import {Theme} from '../../interfaces/ITheme.ts';
 import IProps from './props.ts';
 
 const ThemeProvider: FC<IProps> = ({children}) => {

@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import classNames from 'classnames/bind';
 
-import ITheme, {Theme} from '../interfaces/ITheme.ts';
+import ITheme, {Theme} from '../../interfaces/ITheme.ts';
 import {IProps, Color} from './props.ts';
 
 import styles from './styles.module.css';

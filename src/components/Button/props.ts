@@ -1,6 +1,6 @@
 import {MouseEventHandler} from 'react';
 
-import ITheme from '../interfaces/ITheme.ts';
+import ITheme from '../../interfaces/ITheme.ts';
 
 export enum Color {
   primary = 'primary',

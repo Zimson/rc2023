@@ -1,7 +1,7 @@
 import IProps from './props.ts';
 import classNames from 'classnames/bind';
 
-import IListItem from '../interfaces/IListItem.ts';
+import IListItem from '../../interfaces/IListItem.ts';
 
 import styles from './styles.module.css';
 

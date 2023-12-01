@@ -1,4 +1,4 @@
-import ITheme from '../interfaces/ITheme.ts';
+import ITheme from '../../interfaces/ITheme.ts';
 
 interface Props extends ITheme{
   count: number;
