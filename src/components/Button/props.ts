@@ -6,10 +6,6 @@ export enum colors {
   danger = 'danger',
 }
 
-export interface IStaticFields {
-  colors: typeof colors;
-}
-
 export interface IProps {
   text: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;

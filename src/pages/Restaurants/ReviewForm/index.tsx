@@ -6,6 +6,7 @@ import Button from '../../../components/Button';
 
 import IProps from './props.ts';
 import IReview from '../interfaces/IReview.ts';
+import {colors as buttonColors} from '../../../components/Button/props.ts';
 
 import styles from './styles.module.css';
 
@@ -100,21 +101,27 @@ const ReviewForm: FC<IProps> = ({
 
     dispatch({type: ACTION_TYPE.SUBMIT_START});
 
-    onSubmit({
-      id: userId,
-      user: state.user,
-      rating: state.rating,
-      text: state.text,
-    }, () => {
-      dispatch({type: ACTION_TYPE.SUBMIT_FINISH});
-      dispatch({type: ACTION_TYPE.RESET});
-    });
+    onSubmit(
+      {
+        id: userId,
+        user: state.user,
+        rating: state.rating,
+        text: state.text,
+      },
+      () => {
+        dispatch({type: ACTION_TYPE.SUBMIT_FINISH});
+        dispatch({type: ACTION_TYPE.RESET});
+      },
+    );
   };
 
   return (
     <div className={cx('review-form', className)}>
       <h3 className={cx('title')}>{title}</h3>
-      <form className={cx('form', {'is-submitting': state.isSubmitting})} onSubmit={handleSubmit}>
+      <form
+        className={cx('form', {'is-submitting': state.isSubmitting})}
+        onSubmit={handleSubmit}
+      >
         <div className={cx('form-group')}>
           <span>Ваша оценка:</span>
           <Counter
@@ -156,7 +163,7 @@ const ReviewForm: FC<IProps> = ({
           text="Оставить отзыв"
           type="submit"
           className={cx('submit-button')}
-          color={Button.colors.danger}
+          color={buttonColors.danger}
         />
       </form>
     </div>
