@@ -1,0 +1,143 @@
+@import url('../../styles/style-vars.module.css');
+
+:root {
+  --focus-line: 1px solid var(--button-focus-color);
+  --primary-border: 1px solid var(--primary-btn-bg-color);
+  --warning-border: 1px solid var(--warning-color);
+  --warning-disabled-bg: rgba(255, 166, 35, 0.65);
+  --danger-border: 1px solid var(--alert-color);
+  --danger-disabled-bg: rgba(255, 99, 80, 0.85);
+}
+
+.button {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  border-radius: var(--border-radius);
+  outline: 0;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0 16px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  &[disabled] {
+    cursor: default;
+  }
+
+  .content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.base-box-shadow {
+  box-shadow: var(--btn-base-box-shadow);
+}
+
+.box-shadow-none {
+  box-shadow: none !important;
+}
+
+.disabled {
+  composes: box-shadow-none;
+}
+
+.primary {
+  /* the following line is necessary for FF */
+  outline: 0 !important;
+  color: var(--primary-btn-text-color);
+  background-color: var(--primary-btn-bg-color);
+  composes: base-box-shadow;
+  border: var(--primary-border);
+
+  &:global(.focus-visible) {
+    border: var(--focus-line);
+  }
+
+  &:hover:enabled {
+    color: var(--primary-btn-hover-text-color);
+    background-color: var(--primary-btn-hover-bg-color);
+    border: var(--primary-border) !important;
+  }
+
+  &:active:enabled {
+    background-color: var(--primary-btn-active-bg-color);
+    box-shadow: var(--primary-btn-active-box-shadow);
+    border: var(--primary-border) !important;
+  }
+
+  &[disabled] {
+    color: var(--primary-btn-disabled-text-color);
+    background-color: var(--primary-btn-disabled-bg-color);
+    border: 1px solid var(--primary-btn-disabled-bg-color) !important;
+  }
+}
+
+
+.warning {
+  /* the following line is necessary for FF */
+  outline: 0 !important;
+  color: var(--primary-btn-text-color);
+  background-color: var(--warning-color);
+  composes: base-box-shadow;
+  border: var(--warning-border);
+
+  &:global(.focus-visible) {
+    border: var(--focus-line);
+  }
+
+  &:hover:enabled {
+    color: var(--primary-btn-hover-text-color);
+    background-color: var(--warning-btn-hover-bg-color);
+    border: var(--warning-border) !important;
+  }
+
+  &:active:enabled {
+    background-color: var(--warning-btn-active-bg-color);
+    box-shadow: var(--warning-btn-active-box-shadow);
+    border: var(--warning-border) !important;
+  }
+
+  &[disabled] {
+    color: var(--primary-btn-text-color);
+    background-color: var(--warning-disabled-bg);
+    border: 1px solid var(--warning-disabled-bg) !important;
+  }
+}
+
+.danger {
+  /* the following line is necessary for FF */
+  outline: 0 !important;
+  color: var(--primary-btn-text-color);
+  background-color: var(--alert-color);
+  composes: base-box-shadow;
+  border: var(--danger-border);
+
+  &:global(.focus-visible) {
+    border: var(--focus-line);
+  }
+
+  &:hover:enabled {
+    color: var(--primary-btn-hover-text-color);
+    background-color: var(--danger-btn-hover-bg-color);
+    border: var(--danger-border) !important;
+  }
+
+  &:active:enabled {
+    background-color: var(--danger-btn-active-bg-color);
+    box-shadow: var(--danger-btn-active-box-shadow);
+    border: var(--danger-border) !important;
+  }
+
+  &[disabled] {
+    color: var(--primary-btn-text-color);
+    background-color: var(--danger-disabled-bg);
+    border: 1px solid var(--danger-disabled-bg) !important;
+  }
+}

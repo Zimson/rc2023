@@ -3,6 +3,8 @@ import IRestaurant from './pages/Restaurants/interfaces/IRestaurant.ts';
 
 import IAppProps from './appProps.ts';
 
+import './styles/common.css';
+
 const App = <T extends object>({pageData}: IAppProps<T>) => (
   <Restaurants restaurants={pageData as IRestaurant[]} />
 );

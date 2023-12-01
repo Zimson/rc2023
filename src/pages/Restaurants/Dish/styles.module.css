@@ -1,3 +1,12 @@
+@import url('../../../styles/style-vars.module.css');
+
+
+.dish {
+  padding: 16px;
+  border: 1px dashed var(--primary-color);
+  border-radius: var(--border-radius);
+}
+
 .title-container {
   display: flex;
   justify-content: flex-start;

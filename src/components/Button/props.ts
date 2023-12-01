@@ -1,11 +1,17 @@
 import {MouseEventHandler} from 'react';
 
-interface Props {
+export enum colors {
+  primary= 'primary',
+  warning = 'warning',
+  danger = 'danger',
+}
+
+export interface IProps {
   text: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   className?: string;
+  contentClassName?: string;
   disabled?: boolean;
   type?: 'button' | 'submit';
+  color?: colors;
 }
-
-export default Props;

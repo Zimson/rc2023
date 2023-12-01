@@ -38,18 +38,19 @@ const Counter: FC<IProps> = ({
   };
 
   return (
-    <div className={cx(className)}>
+    <div className={cx('counter', className)}>
       <Button
-        text="-"
+        text="&#8211;"
         onClick={handleDecrement}
-        className={cx('decrement')}
+        className={cx('button', 'decrement')}
+        contentClassName={cx('decrement-dash')}
         disabled={hasMinLimit}
       />
-      {count}
+      <span className={cx('count')}>{count}</span>
       <Button
         text="+"
         onClick={handleIncrement}
-        className={cx('increment')}
+        className={cx('button', 'increment')}
         disabled={hasMaxLimit}
       />
     </div>

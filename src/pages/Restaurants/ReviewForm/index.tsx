@@ -6,6 +6,7 @@ import Button from '../../../components/Button';
 
 import IProps from './props.ts';
 import IReview from '../interfaces/IReview.ts';
+import {colors as buttonColors} from '../../../components/Button/props.ts';
 
 import styles from './styles.module.css';
 
@@ -20,18 +21,25 @@ enum ACTION_TYPE {
   DECREMENT_RATING = 'DECREMENT_RATING',
   INCREMENT_RATING = 'INCREMENT_RATING',
   CHANGE_REVIEW = 'CHANGE_REVIEW',
+  SUBMIT_START = 'SUBMIT_START',
+  SUBMIT_FINISH = 'SUBMIT_FINISH',
+  RESET = 'RESET',
 }
 
 interface IAction {
   type: ACTION_TYPE;
-  payload: unknown;
+  payload?: unknown;
 }
 
-type IState = Omit<IReview, 'id'>;
+type IState = Omit<IReview, 'id'> & {
+  isSubmitting: boolean;
+};
+
 const initialState: IState = {
   user: '',
   rating: MIN_RATING,
   text: '',
+  isSubmitting: false,
 };
 
 const reducer = (state: IState, action: IAction): IState => {
@@ -50,6 +58,15 @@ const reducer = (state: IState, action: IAction): IState => {
     case ACTION_TYPE.CHANGE_REVIEW:
       return {...state, text: payload as string};
 
+    case ACTION_TYPE.SUBMIT_START:
+      return {...state, isSubmitting: true};
+
+    case ACTION_TYPE.SUBMIT_FINISH:
+      return {...state, isSubmitting: false};
+
+    case ACTION_TYPE.RESET:
+      return initialState;
+
     default:
       return state;
   }
@@ -65,41 +82,46 @@ const ReviewForm: FC<IProps> = ({
 
   const handleChangeName = (event: ChangeEvent<HTMLInputElement>) => {
     dispatch({type: ACTION_TYPE.CHANGE_NAME, payload: event.target.value});
-  }
+  };
 
   const handleDecrementScoring = (rating: number) => {
     dispatch({type: ACTION_TYPE.DECREMENT_RATING, payload: rating});
-  }
+  };
 
   const handleIncrementScoring = (rating: number) => {
     dispatch({type: ACTION_TYPE.INCREMENT_RATING, payload: rating});
-  }
+  };
 
   const handleChangeReview = (event: ChangeEvent<HTMLTextAreaElement>) => {
     dispatch({type: ACTION_TYPE.CHANGE_REVIEW, payload: event.target.value});
-  }
+  };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    onSubmit({id: userId, ...state});
+    dispatch({type: ACTION_TYPE.SUBMIT_START});
+
+    onSubmit(
+      {
+        id: userId,
+        user: state.user,
+        rating: state.rating,
+        text: state.text,
+      },
+      () => {
+        dispatch({type: ACTION_TYPE.SUBMIT_FINISH});
+        dispatch({type: ACTION_TYPE.RESET});
+      },
+    );
   };
 
   return (
     <div className={cx('review-form', className)}>
       <h3 className={cx('title')}>{title}</h3>
-      <form className={cx('form')} onSubmit={handleSubmit}>
-        <div className={cx('form-group')}>
-          <label htmlFor="user">Ваше имя:</label>
-          <input
-            id="user"
-            value={state.user}
-            onChange={handleChangeName}
-            type="text"
-            placeholder="Введите своё имя"
-            required
-          />
-        </div>
+      <form
+        className={cx('form', {'is-submitting': state.isSubmitting})}
+        onSubmit={handleSubmit}
+      >
         <div className={cx('form-group')}>
           <span>Ваша оценка:</span>
           <Counter
@@ -112,11 +134,28 @@ const ReviewForm: FC<IProps> = ({
           />
         </div>
         <div className={cx('form-group')}>
-          <label htmlFor="text">Ваш отзыв</label>
+          <label htmlFor="user" className={cx('label')}>
+            Ваше имя:
+          </label>
+          <input
+            id="user"
+            value={state.user}
+            onChange={handleChangeName}
+            className={cx('input')}
+            type="text"
+            placeholder="Введите своё имя"
+            required
+          />
+        </div>
+        <div className={cx('form-group')}>
+          <label htmlFor="text" className={cx('label')}>
+            Ваш отзыв
+          </label>
           <textarea
             id="text"
             value={state.text}
             onChange={handleChangeReview}
+            className={cx('input', 'review-input')}
             placeholder="Введите свой отзыв"
           />
         </div>
@@ -124,6 +163,7 @@ const ReviewForm: FC<IProps> = ({
           text="Оставить отзыв"
           type="submit"
           className={cx('submit-button')}
+          color={buttonColors.danger}
         />
       </form>
     </div>

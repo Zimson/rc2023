@@ -1,0 +1,43 @@
+:root {
+  --primary-color: #467eff;
+  --secondary-color: #333333;
+  --font-family: 'Open Sans', serif;
+  --link-font-weight: 400;
+  --font-color: rgba(51, 51, 51, 0.85);
+  --font-size: 18px;
+  --line-height: 20px;
+  --border-radius: 4px;
+
+  --warning-color: #f5a623;
+  --success-color: #008000;
+  --alert-color: #ff6350;
+  --danger-color: #e90101;
+  --details-color: #a9a9a9;
+  --disable-color: #e0e0e0;
+
+  /* button */
+  --primary-btn-text-color: white;
+  --primary-btn-bg-color: var(--primary-color);
+  --primary-btn-hover-text-color: var(--primary-btn-text-color);
+  --primary-btn-hover-bg-color: rgba(70, 126, 255, 0.75);
+  --primary-btn-disabled-text-color: rgba(70, 126, 255, 0.65);
+  --primary-btn-disabled-bg-color: #e0e0e0;
+  --primary-btn-active-bg-color: rgba(70, 126, 255, 0.85);
+  --primary-btn-active-box-shadow: inset 1px 2px 3px #037356;
+  --button-focus-color: #559fc2;
+  --btn-base-box-shadow: 0px 1px 3px #bfbfbf;
+
+  /* Link button */
+  --link-btn-color: #4a90e2;
+  --link-btn-hover-color: rgba(74, 144, 226, 0.8);
+
+  /* Warning button */
+  --warning-btn-hover-bg-color: #db951f;
+  --warning-btn-active-bg-color: #c2831c;
+  --warning-btn-active-box-shadow: inset 1px 2px 3px #8f6114;
+
+  /* Danger button */
+  --danger-btn-hover-bg-color: #e54d5f;
+  --danger-btn-active-bg-color: #c45;
+  --danger-btn-active-box-shadow: inset 1px 2px 3px #8a353f;
+}

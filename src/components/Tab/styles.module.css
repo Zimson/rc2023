@@ -1,0 +1,5 @@
+@import url('../../styles/style-vars.module.css');
+
+.tab {
+  height: 40px;
+}
