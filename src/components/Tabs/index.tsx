@@ -14,6 +14,7 @@ const Tabs = <T extends ITab>({
   items,
   onTabClick,
   className,
+  theme,
 }: IProps<T>) => {
   const handleClick = (item: T) => () => {
     onTabClick(item);
@@ -24,7 +25,7 @@ const Tabs = <T extends ITab>({
       items={items}
       className={cx('tabs', className)}
       renderItem={(item: T) => (
-        <Tab text={item.text} onClick={handleClick(item)} />
+        <Tab text={item.text} onClick={handleClick(item)} theme={theme} />
       )}
     />
   );

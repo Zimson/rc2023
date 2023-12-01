@@ -17,6 +17,7 @@ const Counter: FC<IProps> = ({
   max,
   step = 1,
   className,
+  theme,
 }) => {
   const hasMinLimit = min !== undefined ? count <= min : false;
   const hasMaxLimit = max !== undefined ? count >= max : false;
@@ -45,6 +46,7 @@ const Counter: FC<IProps> = ({
         className={cx('button', 'decrement')}
         contentClassName={cx('decrement-dash')}
         disabled={hasMinLimit}
+        theme={theme}
       />
       <span className={cx('count')}>{count}</span>
       <Button
@@ -52,6 +54,7 @@ const Counter: FC<IProps> = ({
         onClick={handleIncrement}
         className={cx('button', 'increment')}
         disabled={hasMaxLimit}
+        theme={theme}
       />
     </div>
   );

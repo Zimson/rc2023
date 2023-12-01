@@ -6,6 +6,7 @@ import Counter from '../../../components/Counter';
 import IProps from './props.ts';
 
 import styles from './styles.module.css';
+import useTheme from '../../../providers/ThemeProvider/useTheme.tsx';
 
 const cx = classNames.bind(styles);
 
@@ -13,6 +14,8 @@ const MIN_COUNT = 0;
 const MAX_COUNT = 5;
 
 const Dish: FC<IProps> = ({dish, className}) => {
+  const [theme] = useTheme();
+
   const {id, name, price, ingredients} = dish;
 
   const [count, setCount] = useState(0);
@@ -28,6 +31,7 @@ const Dish: FC<IProps> = ({dish, className}) => {
           onIncrement={setCount}
           min={MIN_COUNT}
           max={MAX_COUNT}
+          theme={theme}
         />
       </div>
 

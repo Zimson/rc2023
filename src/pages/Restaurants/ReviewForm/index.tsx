@@ -6,9 +6,10 @@ import Button from '../../../components/Button';
 
 import IProps from './props.ts';
 import IReview from '../interfaces/IReview.ts';
-import {colors as buttonColors} from '../../../components/Button/props.ts';
+import {Color as ButtonColor} from '../../../components/Button/props.ts';
 
 import styles from './styles.module.css';
+import useTheme from '../../../providers/ThemeProvider/useTheme.tsx';
 
 const cx = classNames.bind(styles);
 
@@ -77,6 +78,8 @@ const ReviewForm: FC<IProps> = ({
   onSubmit,
   className,
 }) => {
+  const [theme] = useTheme();
+
   const [state, dispatch] = useReducer(reducer, initialState);
   const userId = `${state.user}-${useId()}`;
 
@@ -131,6 +134,7 @@ const ReviewForm: FC<IProps> = ({
             count={state.rating}
             onDecrement={handleDecrementScoring}
             onIncrement={handleIncrementScoring}
+            theme={theme}
           />
         </div>
         <div className={cx('form-group')}>
@@ -163,7 +167,7 @@ const ReviewForm: FC<IProps> = ({
           text="Оставить отзыв"
           type="submit"
           className={cx('submit-button')}
-          color={buttonColors.danger}
+          color={ButtonColor.danger}
         />
       </form>
     </div>
