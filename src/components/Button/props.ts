@@ -1,17 +1,19 @@
 import {MouseEventHandler} from 'react';
 
-export enum colors {
-  primary= 'primary',
+import ITheme from '../../interfaces/ITheme.ts';
+
+export enum Color {
+  primary = 'primary',
   warning = 'warning',
   danger = 'danger',
 }
 
-export interface IProps {
+export interface IProps extends ITheme {
   text: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   className?: string;
   contentClassName?: string;
   disabled?: boolean;
   type?: 'button' | 'submit';
-  color?: colors;
+  color?: Color;
 }

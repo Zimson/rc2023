@@ -1,6 +1,7 @@
-@import url('../../styles/style-vars.module.css');
+@import url('../../styles/style-vars.css');
 
 .tabs {
+  width: 100%;
   display: inline-flex;
   list-style: none;
 }
