@@ -14,7 +14,7 @@ const MIN_COUNT = 0;
 const MAX_COUNT = 5;
 
 const Dish: FC<IProps> = ({dish, className}) => {
-  const [theme] = useTheme();
+  const {theme} = useTheme();
 
   const {id, name, price, ingredients} = dish;
 

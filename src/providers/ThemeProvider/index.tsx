@@ -24,7 +24,7 @@ const ThemeProvider: FC<IProps> = ({children}) => {
   }, []);
 
   return (
-    <ThemeContext.Provider value={[theme, toggleTheme]}>
+    <ThemeContext.Provider value={{theme, toggleTheme}}>
       {children}
     </ThemeContext.Provider>
   );

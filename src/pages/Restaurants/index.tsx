@@ -14,7 +14,7 @@ import useTheme from '../../providers/ThemeProvider/useTheme.tsx';
 const cx = classNames.bind(styles);
 
 const Restaurants: FC<IProps> = ({restaurants}: IProps) => {
-  const [theme] = useTheme();
+  const {theme} = useTheme();
 
   const tabs = restaurants.map(restaurant => ({
     id: restaurant.id,

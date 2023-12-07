@@ -11,7 +11,7 @@ import styles from './styles.module.css';
 const cx = classNames.bind(styles);
 
 const Header: FC<IProps> = ({className}) => {
-  const [, toggleTheme] = useTheme();
+  const {toggleTheme} = useTheme();
 
   return (
     <header className={cx('header', className)}>

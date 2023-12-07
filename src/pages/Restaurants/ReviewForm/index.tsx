@@ -78,7 +78,7 @@ const ReviewForm: FC<IProps> = ({
   onSubmit,
   className,
 }) => {
-  const [theme] = useTheme();
+  const {theme} = useTheme();
 
   const [state, dispatch] = useReducer(reducer, initialState);
   const userId = `${state.user}-${useId()}`;
